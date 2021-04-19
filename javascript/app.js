@@ -9,7 +9,7 @@ let leftWebGallaryIndex1;
 let centerWebGallaryIndex2;
 let rightWebGallaryIndex3;
 let count = 0;
-let maxAttempts = 5;
+let maxAttempts = 25;
 
 function Render(Name, source) {
   this.name = Name;
@@ -114,7 +114,7 @@ function handleClicking(event) {
     }
     else if (event.target.id === 'webGallary3R') {
       Render.allElements[rightWebGallaryIndex3].select++;
-    }
+    
     console.log(count);
     collectImageToGenerate();
     console.log(Render.allElements);
