@@ -1,3 +1,4 @@
+
 'use strict';
 
 let webGallay1 = document.getElementById('webGallary1L');
@@ -9,7 +10,7 @@ let leftWebGallaryIndex1;
 let centerWebGallaryIndex2;
 let rightWebGallaryIndex3;
 let count = 0;
-let maxAttempts = 5;
+let maxAttempts = 25;
 
 function Render(Name, source) {
   this.name = Name;
@@ -114,40 +115,39 @@ function handleClicking(event) {
     }
     else if (event.target.id === 'webGallary3R') {
       Render.allElements[rightWebGallaryIndex3].select++;
-
-      console.log(count);
-      collectImageToGenerate();
-      console.log(Render.allElements);
-    } else {
-
-
-      Result.appendChild(button);
-      secOne.removeEventListener('click', handleClicking);
-
     }
+    console.log(count);
+    collectImageToGenerate();
+    console.log(Render.allElements);
+  } else {
+
+
+    Result.appendChild(button);
+    secOne.removeEventListener('click', handleClicking);
+
   }
-  let button = document.createElement('button');
-  Result.appendChild(button);
-  button.setAttribute('id', 'A');
-  button.textContent = 'View Results';
+}
+let button = document.createElement('button');
+Result.appendChild(button);
+button.setAttribute('id', 'A');
+button.textContent = 'View Results';
 
-  button.addEventListener('click', lastHandle);
+button.addEventListener('click', lastHandle);
 
-  function lastHandle(event) {
-    console.log(event);
-    ulList();
-    button.removeEventListener('click', lastHandle);
-  }
+function lastHandle(event) {
+  console.log(event);
+  ulList();
+  button.removeEventListener('click', lastHandle);
+}
 
 
-  function ulList() {
+function ulList() {
 
-    let ul = document.getElementById('ulList');
+  let ul = document.getElementById('ulList');
 
-    for (let i = 0; i < Render.allElements.length; i++) {
-      let li = document.createElement('li');
-      ul.appendChild(li);
-      li.textContent = `The ${Render.allElements[i].name} It has been voted ${Render.allElements[i].select}  and was seen ${Render.allElements[i].showSelected} times `;
-    }
+  for (let i = 0; i < Render.allElements.length; i++) {
+    let li = document.createElement('li');
+    ul.appendChild(li);
+    li.textContent = `The ${Render.allElements[i].name} It has been voted ${Render.allElements[i].select}  and was seen ${Render.allElements[i].showSelected} times `;
   }
 }
