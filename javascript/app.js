@@ -1,57 +1,151 @@
+'use strict';
 
-let webGallay1 = document.getElementById('webGallay1');
-let webGallay2 = document.getElementById('webGallay2');
-let webGallay3 = document.getElementById('webGallay3');
+let webGallay1 = document.getElementById('webGallary1L');
+let webGallay2 = document.getElementById('webGallary2C');
+let webGallay3 = document.getElementById('webGallary3R');
 
-render.allElements = [];
-function render(Name, filePath, timeOfImage) {
+
+let leftWebGallaryIndex1;
+let centerWebGallaryIndex2;
+let rightWebGallaryIndex3;
+let count = 0;
+let maxAttempts = 25;
+
+function Render(Name, source) {
   this.name = Name;
-  this.filePath = filePath;
-  this.timeOfImage = timeOfImage;
+  this.source = source;
   this.select = 0;
-  render.allElements.push(this);
+  this.showSelected = 0;
+  Render.allElements.push(this);
 
 }
 
-new render('bag', '../img/bag.jpg');
+Render.allElements = [];
 
-new render('banana', '../img/banana.jpg');
+new Render('bag', 'img/bag.jpg');
 
-new render('bathroom', '../img/bathroom.jpg');
+new Render('banana', 'img/banana.jpg');
 
-new render('boots', '../img/boots.jpg');
+new Render('bathroom', 'img/bathroom.jpg');
 
-new render('breakfast', '../img/breakfast.jpg');
+new Render('boots', 'img/boots.jpg');
 
-new render('bubblegum', '../img/bubblegum.jpg');
+new Render('breakfast', 'img/breakfast.jpg');
 
-new render('chair', '../img/chair.jpg');
+new Render('bubblegum', 'img/bubblegum.jpg');
 
-new render('cthulhu', '../img/cthulhu.jpg');
+new Render('chair', 'img/chair.jpg');
 
-new render('dog-duck', '../img/dog-duck.jpg');
+new Render('cthulhu', 'img/cthulhu.jpg');
 
-new render('dragon', '../img/dragon.jpg');
+new Render('dog-duck', 'img/dog-duck.jpg');
 
-new render('pen', '../img/pen.jpg');
+new Render('dragon', 'img/dragon.jpg');
 
-new render('pet-sweep', '../img/pet-sweep.jpg');
+new Render('pen', 'img/pen.jpg');
 
-new render('scissors', '../img/scissors.jpg');
+new Render('pet-sweep', 'img/pet-sweep.jpg');
 
-new render('shark', '../img/shark.jpg');
+new Render('scissors', 'img/scissors.jpg');
 
-new render('sweep', '../img/sweep.png');
+new Render('shark', 'img/shark.jpg');
 
-new render('tauntaun', '../img/tauntaun.jpg');
+new Render('sweep', 'img/sweep.png');
 
-new render('unicorn', '../img/unicorn.jpg');
+new Render('tauntaun', 'img/tauntaun.jpg');
 
-new render('usb', '../img/usb.gif');
+new Render('unicorn', 'img/unicorn.jpg');
 
-new render('water-can', '../img/water-can.jpg');
+new Render('usb', 'img/usb.gif');
 
-new render('wine-glass', '../img/wine-glass.jpg');
+new Render('water-can', 'img/water-can.jpg');
 
+new Render('wine-glass', 'img/wine-glass.jpg');
+
+
+console.log(Render.allElements);
+//random image
+function generateRandomImag() {
+  return Math.floor(Math.random() * Render.allElements.length);
+}
+
+
+
+function collectImageToGenerate() {
+  leftWebGallaryIndex1 = generateRandomImag();
+  centerWebGallaryIndex2 = generateRandomImag();
+  rightWebGallaryIndex3 = generateRandomImag();
+
+}
+
+//no repeated image
+while ((leftWebGallaryIndex1 === centerWebGallaryIndex2 || leftWebGallaryIndex1 === rightWebGallaryIndex3 || rightWebGallaryIndex3 === centerWebGallaryIndex2 || rightWebGallaryIndex3 === leftWebGallaryIndex1)) {
+  leftWebGallaryIndex1 = generateRandomImag();
+  centerWebGallaryIndex2 = generateRandomImag();
+}
+// console.log(leftWebGallaryIndex1);
+
+// displaying the images
+webGallay1.src = Render.allElements[leftWebGallaryIndex1].source;
+Render.allElements[leftWebGallaryIndex1].showSelected++;
+webGallay2.src = Render.allElements[centerWebGallaryIndex2].source;
+Render.allElements[centerWebGallaryIndex2].showSelected++;
+webGallay3.src = Render.allElements[rightWebGallaryIndex3].source;
+Render.allElements[rightWebGallaryIndex3].showSelected++;
+
+collectImageToGenerate();
+
+webGallay1.addEventListener('click', handleClicking);
+webGallay2.addEventListener('click', handleClicking);
+webGallay3.addEventListener('click', handleClicking);
+
+function handleClicking(event) {
+  count++;
+
+  if (maxAttempts >= count) {
+    if (event.target.id === 'webGallary1L') {
+      Render.allElements[leftWebGallaryIndex1].select++;
+
+    }
+    else if (event.target.id === 'webGallary2C') {
+      Render.allElements[centerWebGallaryIndex2].select++;
+
+    }
+    else if (event.target.id === 'webGallary3R') {
+    }
+    console.log(count);
+    collectImageToGenerate();
+    console.log(Render.allElements);
+  } else {
+
+    let Result = document.getElementById('Result');
+    Result.appendChild(button);
+    webGallay1.removeEventListener('click', handleClicking);
+    webGallay2.removeEventListener('click', handleClicking);
+    webGallay3.removeEventListener('click', handleClicking);
+  }
+}
+let button = document.createElement('button');
+button.setAttribute("id", "A");
+button.textContent = 'View Results';
+
+button.addEventListener('click', lastHandle);
+
+function lastHandle(event) {
+  console.log(event.target.id);
+  ulList();
+  button.removeEventListener('click', lastHandle);
+}
+
+
+function ulList() {
+
+  let ul = document.getElementById('unOrderList');
+  for (let i = 0; i < Render.allElements.length; i++) {
+    let li = document.createElement('li');
+    ul.appendChild(li);
+    li.textContent = `${Render.allImages[i].name} have these ${Render.allImages[i].select}  and was seen ${Render.allImages[i].showSelected} times `;
+  }
+}
 
 
