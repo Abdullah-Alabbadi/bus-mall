@@ -1,23 +1,23 @@
 #webGallary1L {
-    position: relative;
-    float: right;
-    width: 21%;
-    padding: 30px;
-  }
-  
-  #webGallary2C {
-    position: relative;
-    float: right;
-    width: 21%;
-  
-    padding: 30px;
-  }
-  
-  
-  #webGallary3R {
-    position: relative;
-    float: right;
-    width: 21%;
-    padding: 30px;
-  }
-  
+
+  position: relative;
+  float: right;
+  width: 21%;
+  padding: 30px;
+}
+
+#webGallary2C {
+  position: relative;
+  float: right;
+  width: 21%;
+
+  padding: 30px;
+}
+
+#webGallary3R {
+  position: relative;
+  float: right;
+  width: 21%;
+  padding: 30px;
+}
+
