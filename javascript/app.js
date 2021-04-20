@@ -1,3 +1,4 @@
+
 'use strict';
 
 let webGallay1 = document.getElementById('webGallary1L');
@@ -80,6 +81,7 @@ function collectImageToGenerate() {
   centerWebGallaryIndex2 = generateRandomImag();
   rightWebGallaryIndex3 = generateRandomImag();
 
+
   while (leftWebGallaryIndex1 === rightWebGallaryIndex3 || leftWebGallaryIndex1 === centerWebGallaryIndex2 || centerWebGallaryIndex2 === rightWebGallaryIndex3 || previouslyshowSelected.includes(leftWebGallaryIndex1) || previouslyshowSelected.includes(centerWebGallaryIndex2) || checking(rightWebGallaryIndex3, previouslyshowSelected)) {
     rightWebGallaryIndex3 = generateRandomImag();
     centerWebGallaryIndex2 = generateRandomImag();
@@ -87,6 +89,7 @@ function collectImageToGenerate() {
   }
 
   previouslyshowSelected = [leftWebGallaryIndex1, centerWebGallaryIndex2, rightWebGallaryIndex3];
+
 
 
 
@@ -117,20 +120,25 @@ function handleClicking(event) {
       alert('click on the image');
       count--;
     }
+
+
     collectImageToGenerate();
     console.log(Render.allElements);
   } else {
     renderList();
     chart();
 
+
     secOne.removeEventListener('click', handleClicking);
   }
 }
+
 
 // let button = document.createElement('button');
 // Result.appendChild(button);
 // button.setAttribute('id', 'A');
 // button.textContent = 'View Results';
+
 
 // secOne.addEventListener('click', lastHandle);
 
@@ -141,7 +149,9 @@ function handleClicking(event) {
 // }
 
 
+
 // function ulList() {
+
 
 //   let ul = document.getElementById('ulList');
 
@@ -156,12 +166,15 @@ let repeatSelected = [];
 let repeatShowSelected = [];
 function renderList() {
   let ul = document.getElementById('ulList');
+
   for (let i = 0; i < Render.allElements.length; i++) {
     repeatSelected.push(Render.allElements[i].select);
     repeatShowSelected.push(Render.allElements[i].showSelected);
     let li = document.createElement('li');
     ul.appendChild(li);
+
     li.textContent = `${Render.allElements[i].name} it has ${Render.allElements[i].select} select and its seen ${Render.allElements[i].showSelected}`;
+
   }
   console.log(Render.allElements);
 
@@ -196,3 +209,4 @@ function chart() {
     }
   });
 }
+
