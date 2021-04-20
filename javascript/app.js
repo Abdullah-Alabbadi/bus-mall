@@ -5,6 +5,7 @@ let webGallay1 = document.getElementById('webGallary1L');
 let webGallay2 = document.getElementById('webGallary2C');
 let webGallay3 = document.getElementById('webGallary3R');
 let secOne = document.getElementById('sec-one');
+// eslint-disable-next-line no-unused-vars
 let Result = document.getElementById('Result');
 let leftWebGallaryIndex1;
 let centerWebGallaryIndex2;
@@ -67,6 +68,20 @@ new Render('wine-glass', 'img/wine-glass.jpg');
 
 console.log(Render.allElements);
 
+function saveStorage(){
+  let convertSring= JSON.stringify(Render.allElements);
+  localStorage.setItem('obj',convertSring);
+}
+
+function getFromConvert(){
+  let data=localStorage.getItem('obj');
+  let converterData= JSON.parse(data);
+  if(converterData!==null){
+    Render.allElements=converterData;
+  }
+}
+
+getFromConvert();
 
 let previouslyshowSelected = [];
 function checking(idx, arr) {
@@ -125,6 +140,7 @@ function handleClicking(event) {
     collectImageToGenerate();
     console.log(Render.allElements);
   } else {
+    saveStorage();
     renderList();
     chart();
 
