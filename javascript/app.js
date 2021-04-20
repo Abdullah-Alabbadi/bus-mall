@@ -1,6 +1,6 @@
 
 'use strict';
-
+alert('Welcome to your random select Bus');
 let webGallay1 = document.getElementById('webGallary1L');
 let webGallay2 = document.getElementById('webGallary2C');
 let webGallay3 = document.getElementById('webGallary3R');

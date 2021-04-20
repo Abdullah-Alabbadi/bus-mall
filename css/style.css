@@ -1,7 +1,15 @@
+header{
+  font-family: consolas;
+  border: 2px solid #73AD21;
+  border-radius: 25px;
+  border-style: groove;
+}
 #webGallary1L {
   position: relative;
   float: right;
   width: 21%;
+  top: 95px;
+  right: 145px;
   padding: 30px;
 }
 
@@ -9,12 +17,15 @@
   position: relative;
   float: right;
   width: 21%;
-
+  top: 95px;
+  right: 145px;
   padding: 30px;
 }
 
 #webGallary3R {
   position: relative;
+  right: 145px;
+  top: 95px;
   float: right;
   width: 21%;
   padding: 30px;
